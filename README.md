@@ -71,3 +71,37 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+### Using Auth0
+
+### installing Auth0 React SDK
+`npm install @auth0/auth0-react`
+
+### Configure Auth0 Provider component
+  Under the hood, the Auth0 React SDK uses React Context
+  to manage the authentication state of your users. One way to integrate Auth0 with your React app is to wrap your root component with an Auth0Provider
+  that you can import from the SDK
+ 
+ ```
+ import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
+import { Auth0Provider } from "@auth0/auth0-react";
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  
+  <Auth0Provider
+    domain="dev-qzz2c7nc6x6dqjar.us.auth0.com"     //Your domain
+    clientId="SCSt97V49TFQwIzDcPQLqIh1QttWla5j"    //Your client ID
+    authorizationParams={{
+      redirect_uri: window.location.origin
+    }}>
+
+    <App />
+  </Auth0Provider>
+);
+reportWebVitals(); 
+```
